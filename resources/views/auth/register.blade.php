@@ -28,7 +28,7 @@
             </div>
 
             
-            @livewire('departamento-trabajo')
+            @livewire('areas')
 
 
             <!-- Password -->

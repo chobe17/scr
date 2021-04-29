@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Departamento;
 
-class DepartamentoTrabajo extends Component
+class Areas extends Component
 {
 	public $areas;
 
@@ -16,6 +16,6 @@ class DepartamentoTrabajo extends Component
 
     public function render()
     {
-        return view('livewire.departamento-trabajo');
+        return view('livewire.areas');
     }
 }
