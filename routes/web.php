@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Departamentos;
+use App\Http\Livewire\Lineas;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,5 +24,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth'])->get('/departamentos', Departamentos::class)->name('departamentos');
+
+Route::middleware(['auth'])->get('/lineas', Lineas::class)->name('lineas');
 
 require __DIR__.'/auth.php';
