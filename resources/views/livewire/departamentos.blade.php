@@ -25,8 +25,9 @@
 			<table class="table-fixed w-full">
 				<thead>
 					<tr class="bg-grray-100">
-						<th class="px-4 py-2 w-20">No.</th>
-						<th class="px-4 py-2">Nombre</th>
+						<th class="px-4 py-2 w-16">No.</th>
+						<th class="px-4 py-2 w-1/2">Nombre</th>
+						<th class="px-4 py-2">Acción</th>
 					</tr>
 				</thead>
 				<tbody>
