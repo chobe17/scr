@@ -37,7 +37,7 @@
 						<td class="border px-4 py-2 text-xs md:text-base">{{ $linea->id }}</td>
 						<td class="border px-4 py-2 text-xs md:text-base">{{ $linea->nombre }}</td>
 						<td class="border px-4 py-2 text-xs md:text-base">{{ $linea->descripcion }}</td>
-						<td class="border px-4 py-2">
+						<td class="border lg:flex px-4 justify-around py-2">
 							<button wire:click="edit({{ $linea->id }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-xs md:text-base">Editar</button>
 							<button wire:click="delete({{ $linea->id }})" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded text-xs md:text-base">Eliminar</button>
 						</td>
