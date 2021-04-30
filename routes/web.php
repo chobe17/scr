@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Departamentos;
 use App\Http\Livewire\Lineas;
+use App\Http\Livewire\Maquinas;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +27,7 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth'])->get('/departamentos', Departamentos::class)->name('departamentos');
 
 Route::middleware(['auth'])->get('/lineas', Lineas::class)->name('lineas');
+
+Route::middleware(['auth'])->get('/maquinas', Maquinas::class)->name('maquinas');
 
 require __DIR__.'/auth.php';
