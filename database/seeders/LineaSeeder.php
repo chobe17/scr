@@ -49,5 +49,15 @@ class LineaSeeder extends Seeder
             'descripcion' => 'CO COMPRESORA SACMI MODELO 32M',
         ]);
 
+        DB::table('lineas')->insert([
+            'nombre' => 'KASE 1',
+            'descripcion' => 'KASE ROTATIVA',
+        ]);
+
+        DB::table('lineas')->insert([
+            'nombre' => 'KASE 2',
+            'descripcion' => 'KASE ROTATIVA',
+        ]);
+
     }
 }
