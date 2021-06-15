@@ -60,7 +60,7 @@ class Maquinas extends Component
     		'tipo_maquina' => $this->tipo_maquina, 'linea' => $this->linea, 'capacidad' => $this->capacidad,
     	]);
 
-    	session()->flash('message', $this->maquina_id ? 'Maquina agregada exitosamente.' : 'Maquina modificada exitosamente.');
+    	session()->flash('message', $this->maquina_id ? 'Maquina modificada exitosamente.' : 'Maquina agregada exitosamente.');
 
     	$this->closeModal();
     	$this->resetInputFields();

@@ -31,6 +31,11 @@
                         {{ __('Maquinas') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('ordenes-produccion')" :active="request()->routeIs('livewire.ordenes-produccion')">
+                        {{ __('Ordenes de producción') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->

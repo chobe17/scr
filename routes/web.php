@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Departamentos;
 use App\Http\Livewire\Lineas;
 use App\Http\Livewire\Maquinas;
+use App\Http\Livewire\OrdenesProduccion;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +30,7 @@ Route::middleware(['auth'])->get('/departamentos', Departamentos::class)->name('
 Route::middleware(['auth'])->get('/lineas', Lineas::class)->name('lineas');
 
 Route::middleware(['auth'])->get('/maquinas', Maquinas::class)->name('maquinas');
+
+Route::middleware(['auth'])->get('/ordenes-produccion', OrdenesProduccion::class)->name('ordenes-produccion');
 
 require __DIR__.'/auth.php';

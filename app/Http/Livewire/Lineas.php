@@ -50,7 +50,7 @@ class Lineas extends Component
     		'descripcion' => $this->descripcion
     	]);
 
-    	session()->flash('message', $this->linea_id ? 'Linea agregada exitosamente.' : 'Linea modificada exitosamente.');
+    	session()->flash('message', $this->linea_id ? 'Linea modificada exitosamente.' : 'Linea agregada exitosamente.');
 
     	$this->closeModal();
     	$this->resetInputFields();
