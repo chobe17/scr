@@ -15,9 +15,9 @@ class CreateMaquinasTable extends Migration
     {
         Schema::create('maquinas', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('tipo_maquina');
-            $table->string('linea');
+            $table->char('nombre',20);
+            $table->char('tipo_maquina',20);
+            $table->char('linea',20);
             $table->integer('capacidad');
             $table->timestamps();
         });

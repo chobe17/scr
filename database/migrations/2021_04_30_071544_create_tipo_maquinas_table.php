@@ -15,7 +15,7 @@ class CreateTipoMaquinasTable extends Migration
     {
         Schema::create('tipo_maquinas', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre_tipo');
+            $table->char('nombre_tipo',20);
             $table->timestamps();
         });
     }
