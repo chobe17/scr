@@ -5,6 +5,7 @@ use App\Http\Livewire\Departamentos;
 use App\Http\Livewire\Lineas;
 use App\Http\Livewire\Maquinas;
 use App\Http\Livewire\OrdenesProduccion;
+use App\Http\Livewire\Mermas;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,5 +33,7 @@ Route::middleware(['auth'])->get('/lineas', Lineas::class)->name('lineas');
 Route::middleware(['auth'])->get('/maquinas', Maquinas::class)->name('maquinas');
 
 Route::middleware(['auth'])->get('/ordenes-produccion', OrdenesProduccion::class)->name('ordenes-produccion');
+
+Route::middleware(['auth'])->get('/mermas', Mermas::class)->name('mermas');
 
 require __DIR__.'/auth.php';

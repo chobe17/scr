@@ -36,6 +36,11 @@
                         {{ __('Ordenes de producción') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('mermas')" :active="request()->routeIs('livewire.mermas')">
+                        {{ __('Mermas') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->

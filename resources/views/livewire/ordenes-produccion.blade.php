@@ -23,7 +23,7 @@
 
             <table class="table-fixed w-full">
                 <thead>
-                    <tr class="bg-grray-100">
+                    <tr class="bg-gray-100">
                         <th class="px-4 py-2 text-xs md:text-base">O/P</th>
                         <th class="px-4 py-2 text-xs md:text-base">Nombre producto</th>
                         <th class="px-4 py-2 text-xs md:text-base">Descripción</th>

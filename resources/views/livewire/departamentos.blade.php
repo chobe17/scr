@@ -17,14 +17,14 @@
 			</div>
 			@endif
 
-			<button wire:click="create()" class="bg-blue-500 hover:bg-blue700 text-white font-bold py-2 px-4 rounded my-3">Agregar departamento</button>
+			<button wire:click="create()" class="bg-blue-500 hover:bg-blue800 text-white font-bold py-2 px-4 rounded my-3">Agregar departamento</button>
 			@if($isOpen)
 			@include('livewire.create-departamentos')
 			@endif
 
 			<table class="table-fixed w-full">
 				<thead>
-					<tr class="bg-grray-100">
+					<tr class="bg-gray-100">
 						<th class="px-4 py-2 w-16">No.</th>
 						<th class="px-4 py-2 w-1/2">Nombre</th>
 						<th class="px-4 py-2">Acción</th>

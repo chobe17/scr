@@ -16,7 +16,7 @@ class Mermas extends Component
 
     public $mermas, $merma_id, $maquinas, $analistas, $grupos, $motivos_descartes, $operadores, $ordenes_produccion;
 
-    public $mlinea, $mmaquina, $mtipo_maquina, $mtintas, $mcodigo_analista, $mnombre_analista, $mturno, $mgrupo, $mproduccion, $mmerma, $mrechazados, $mmotivo_descarte, $mmotivo_descarte, $mcomenctarios, $mcodigo_operador, $morden_produccion, $mcodigo_producto, $mdescripcion_producto, $mconfirmado;
+    public $mlinea, $mmaquina, $mtipo_maquina, $mtintas, $mcodigo_analista, $mnombre_analista, $mturno, $mgrupo, $mproduccion, $mmerma, $mrechazados, $mmotivo_descarte, $mcomenctarios, $mcodigo_operador, $morden_produccion, $mcodigo_producto, $mdescripcion_producto, $mconfirmado;
 
     public $isOpen = 0;
 
@@ -25,10 +25,10 @@ class Mermas extends Component
 
         $this->mermas = Merma::all();
         $this->maquinas = Maquina::all();
-        $this->analistas = User::where('area',5);
+        $this->analistas = DB::table('users')->where('area',5)->get();
         $this->grupos = DB::table('grupos')->get();
         $this->motivos_descartes = DB::table('motivos_descartes')->get();
-        $this->operadores = User::where('area',4);
+        $this->operadores = DB::table('users')->where('area',4)->get();
         $this->ordenes_produccion = OrdenProduccion::All();
 
         return view('livewire.mermas');
@@ -113,10 +113,10 @@ class Mermas extends Component
                 'codigo_operador' => this->mcodigo_operador,
                 'orden_produccion' => this->morden_produccion,
                 'codigo_producto' => this->mcodigo_producto,
-                'descripcion_producto' => this->mdescripcion_producto,
+                'descripcion_producto' => this->mdescripcion_producto
             ]);
 
-        session()->flash('message', $this->merma_id ? 'Registro modificado exitosamente.' . 'Registro agregado exitosamente.');
+        session()->flash('message', $this->merma_id ? 'Registro modificado exitosamente.' : 'Registro agregado exitosamente.');
 
         $this->closeModal();
         $this->resetInputFields();
