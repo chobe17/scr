@@ -25,17 +25,17 @@
 			<table class="table-fixed w-full">
 				<thead>
 					<tr class="bg-gray-100">
-						<th class="px-4 py-2 w-16">No.</th>
-						<th class="px-4 py-2 w-1/2">Nombre</th>
-						<th class="px-4 py-2">Acción</th>
+						<th class="px-4 py-2 w-1/12">No.</th>
+						<th class="px-4 py-2 w-8/12">Nombre</th>
+						<th class="px-4 py-2 w-3/12">Acción</th>
 					</tr>
 				</thead>
 				<tbody>
 					@foreach($departamentos as $departamento)
 					<tr>
-						<td class="border px-4 py-2">{{ $departamento->id }}</td>
-						<td class="border px-4 py-2">{{ $departamento->nombre }}</td>
-						<td class="border px-4 py-2">
+						<td class="border px-4 py-2 w-1/12">{{ $departamento->id }}</td>
+						<td class="border px-4 py-2 w-8/12">{{ $departamento->nombre }}</td>
+						<td class="border flex px-4 w-auto justify-around py-2">
 							<button wire:click="edit({{ $departamento->id }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Editar</button>
 							<button wire:click="delete({{ $departamento->id }})" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Eliminar</button>
 						</td>
