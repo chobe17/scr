@@ -30,6 +30,8 @@ class Mermas extends Component
         $this->motivos_descartes = DB::table('motivos_descartes')->get();
         $this->operadores = DB::table('users')->where('area',4)->get();
         $this->ordenes_produccion = OrdenProduccion::All();
+        $this->mlinea = $maquinas;
+
 
         return view('livewire.mermas');
     }
