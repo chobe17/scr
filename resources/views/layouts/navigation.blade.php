@@ -107,6 +107,16 @@
                 {{ __('Maquinas') }}
             </x-responsive-nav-link>
         </div>
+                <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('maquinas')" :active="request()->routeIs('livewire.maquinas')">
+                {{ __('Ordenes de producción') }}
+            </x-responsive-nav-link>
+        </div>
+                <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('maquinas')" :active="request()->routeIs('livewire.maquinas')">
+                {{ __('Mermas') }}
+            </x-responsive-nav-link>
+        </div>
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
