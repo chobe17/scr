@@ -39,12 +39,12 @@
                 			</select>
 						</div>
 						<div class="mb-4">
-							<label for="maquina" class="block text-gray-700 text-sm font-bold mb-2">Máquina:</label>
+							<label for="maquina" class="block text-gray-700 text-sm font-bold mb-2" wire:model="M">Máquina:</label>
 
-							<select name="maquina" class="block mt-1 w-full rounded" wire:model="mmaquina">
+							<select name="maquina" class="block mt-1 w-full rounded">
                     			<option value="">Maquina</option>
                     		@foreach ($maquinas as $maquina)
-                        		<option value="{{ $maquina->nombre }}">{{ $maquina->nombre }}</option>
+                        		<option value="{{ $maquina->id }}">{{ $maquina->nombre }}</option>
                     		@endforeach
                 			</select>
 
@@ -52,7 +52,7 @@
 						<div class="">
 						<div class="mb-4">
 							<label for="linea" class="block text-gray-700 text-sm font-bold mb-2">Línea:</label>
-							<label for="linea2" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Línea" wire:model="mlinea">{{$mlinea}}</label>
+							<label for="linea2" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Línea">{{$mlinea}}</label>
 							@error('linea') <span class="text-red-500">{{ $message }}</span>@enderror
 						</div>
 					</div>

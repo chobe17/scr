@@ -14,7 +14,7 @@ use App\Models\OrdenProduccion;
 class Mermas extends Component
 {
 
-    public $mermas, $merma_id, $maquinas, $analistas, $grupos, $motivos_descartes, $operadores, $ordenes_produccion;
+    public $M, $mermas, $merma_id, $maquinas, $analistas, $grupos, $motivos_descartes, $operadores, $ordenes_produccion;
 
     public $mlinea, $mmaquina, $mtipo_maquina, $mtintas, $mcodigo_analista, $mnombre_analista, $mturno, $mgrupo, $mproduccion, $mmerma, $mrechazados, $mmotivo_descarte, $mcomenctarios, $mcodigo_operador, $morden_produccion, $mcodigo_producto, $mdescripcion_producto, $mconfirmado;
 
@@ -30,10 +30,14 @@ class Mermas extends Component
         $this->motivos_descartes = DB::table('motivos_descartes')->get();
         $this->operadores = DB::table('users')->where('area',4)->get();
         $this->ordenes_produccion = OrdenProduccion::All();
-        $this->mlinea = $maquinas;
-
 
         return view('livewire.mermas');
+    }
+
+    public function agregarlinea($id)
+    {
+        $this->m = Maquina::where('id', '=', $id)->get();
+        $this->mlinea = $m->linea;
     }
 
     public function create()
