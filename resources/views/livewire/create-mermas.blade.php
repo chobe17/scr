@@ -41,7 +41,7 @@
 						<div class="mb-4">
 							<label for="maquina" class="block text-gray-700 text-sm font-bold mb-2" wire:model="M">Máquina:</label>
 
-							<select name="maquina" class="block mt-1 w-full rounded">
+							<select name="maquina" class="block mt-1 w-full rounded" wire:model="mmaquina">
                     			<option value="">Maquina</option>
                     		@foreach ($maquinas as $maquina)
                         		<option value="{{ $maquina->id }}">{{ $maquina->nombre }}</option>

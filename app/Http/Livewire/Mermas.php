@@ -25,6 +25,16 @@ class Mermas extends Component
 
         $this->mermas = Merma::all();
         $this->maquinas = Maquina::all();
+
+        if($this->mmaquina != null)
+        {
+            $this->mlinea = Maquina::where('id',$this->mmaquina)->value('linea');
+        }
+        else
+        {
+            $this->mlinea = "";
+        }
+
         $this->analistas = DB::table('users')->where('area',5)->get();
         $this->grupos = DB::table('grupos')->get();
         $this->motivos_descartes = DB::table('motivos_descartes')->get();
@@ -32,12 +42,6 @@ class Mermas extends Component
         $this->ordenes_produccion = OrdenProduccion::All();
 
         return view('livewire.mermas');
-    }
-
-    public function agregarlinea($id)
-    {
-        $this->m = Maquina::where('id', '=', $id)->get();
-        $this->mlinea = $m->linea;
     }
 
     public function create()
