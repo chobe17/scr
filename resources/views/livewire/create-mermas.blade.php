@@ -47,8 +47,8 @@
                         		<option value="{{ $maquina->id }}">{{ $maquina->nombre }}</option>
                     		@endforeach
                 			</select>
-
 						</div>
+
 						<div class="">
 						<div class="mb-4">
 							<label for="linea" class="block text-gray-700 text-sm font-bold mb-2">Línea:</label>
@@ -56,6 +56,31 @@
 							@error('linea') <span class="text-red-500">{{ $message }}</span>@enderror
 						</div>
 					</div>
+
+					@if($mtipo_maquina == "KASE")
+						<div class="mb-4">
+							<label for="tintas" class="block text-gray-700 text-sm font-bold mb-2">Tintas:</label>
+
+							<select name="tintas" class="block mt-1 w-full rounded" wire:model="mtintas">
+                    			<option value="">1</option>
+                    			<option value="">2</option>
+                    			<option value="">3</option>
+                			</select>
+						</div>
+					@endif
+					<div class="mb-4">
+							<label for="tintas" class="block text-gray-700 text-sm font-bold mb-2">ODC:</label>
+							<input type="number" wire:model="buscar_odc" class="appearance-none py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline rounded-lg">
+
+							<select name="odc" class="block mt-1 w-full rounded" wire:model="morden_produccion">
+                    			<option value="">Seleccionar ODC</option>
+
+                    			@foreach($odcs as $odc)
+                    			<option value="{{$odc->numero_orden}}">{{$odc->numero_orden}} {{$odc->codigo_producto}} {{$odc->descripcion_producto}}</option>
+              					@endforeach
+                			</select>
+					</div>
+
 
 
 

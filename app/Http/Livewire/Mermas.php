@@ -16,7 +16,7 @@ class Mermas extends Component
 
     public $M, $mermas, $merma_id, $maquinas, $analistas, $grupos, $motivos_descartes, $operadores, $ordenes_produccion;
 
-    public $mlinea, $mmaquina, $mtipo_maquina, $mtintas, $mcodigo_analista, $mnombre_analista, $mturno, $mgrupo, $mproduccion, $mmerma, $mrechazados, $mmotivo_descarte, $mcomenctarios, $mcodigo_operador, $morden_produccion, $mcodigo_producto, $mdescripcion_producto, $mconfirmado;
+    public $mlinea, $mmaquina, $mtipo_maquina, $mtintas, $mcodigo_analista, $mnombre_analista, $mturno, $mgrupo, $mproduccion, $mmerma, $mrechazados, $mmotivo_descarte, $mcomenctarios, $mcodigo_operador, $morden_produccion, $mcodigo_producto, $mdescripcion_producto, $mconfirmado, $buscar_odc, $odcs;
 
     public $isOpen = 0;
 
@@ -29,11 +29,18 @@ class Mermas extends Component
         if($this->mmaquina != null)
         {
             $this->mlinea = Maquina::where('id',$this->mmaquina)->value('linea');
+            $this->mtipo_maquina = Maquina::where('id',$this->mmaquina)->value('tipo_maquina');
         }
         else
         {
             $this->mlinea = "";
+            $this->mtipo_maquina = "";
+            $this->mtintas = "";
         }
+
+        $buscar_odc = '%' . $this->buscar_odc . '%';
+        $this->odcs = OrdenProduccion::where('numero_orden', 'like', $buscar_odc)->get();
+
 
         $this->analistas = DB::table('users')->where('area',5)->get();
         $this->grupos = DB::table('grupos')->get();
