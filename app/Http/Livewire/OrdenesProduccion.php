@@ -57,7 +57,7 @@ class OrdenesProduccion extends Component
 
     }
 
-public function edit($op_id)
+public function edit($id)
 {
     $orden_produccion = OrdenProduccion::findOrfail($op_id);
     $this->op_id = $orden_produccion->id;
@@ -68,9 +68,9 @@ public function edit($op_id)
     $this->openModal();
 }
 
-public function delete($op_id)
+public function delete($id)
 {
-    OrdenProduccion::find($op_id)->delete();
+    OrdenProduccion::find($id)->delete();
     session()->flash('message', 'Orden eliminada correctamente.');
 }
 

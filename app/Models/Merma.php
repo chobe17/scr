@@ -12,7 +12,7 @@ class Merma extends Model
     protected $table = 'mermas';
     protected $fillable = [
 
-        'fecha',
+
         'linea',
         'maquina',
         'tipo_maquina',

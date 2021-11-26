@@ -77,7 +77,7 @@
 					<div class="flex flex-row mt-4">
 
 					<div class="flex-col w-auto mx-4">
-							<label for="tintas" class="block text-gray-700 text-sm font-bold mb-2">BUSCAR:</label>
+							<label for="tintas" class="block text-gray-700 text-sm font-bold mb-2">Buscar:</label>
 							<input type="number" wire:model="buscar_odc" class="appearance-none py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline rounded-lg">
 					</div>
 
@@ -91,11 +91,51 @@
               					@endforeach
                 			</select>
 					</div>
+				</div>
 
+				<div class="flex flex-row mt-4">
+					<div class="flex-col w-auto mx-4">
+						<label for="produccion" class="block text-gray-700 text-sm font-bold mb-2">Producción:</label>
+						<input type="number" wire:model="mproduccion" class="appearance-none py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline rounded-lg">
+					</div>
+					<div class="flex-col w-auto mx-4">
+						<label for="merma" class="block text-gray-700 text-sm font-bold mb-2">Merma:</label>
+						<input type="number" wire:model="mmerma" class="appearance-none py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline rounded-lg">
+					</div>
+					<div class="flex-col w-auto mx-4">
+						<label for="rechazados" class="block text-gray-700 text-sm font-bold mb-4">Rechazados:</label>
+							<label for="rechazados2" class="border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mt-1" placeholder="Rechazados">{{$mrechazados}}</label>
+
+					</div>
+				</div>
+
+				<div class="flex flex-row mt-4">
+					<div class="flex-col w-auto mx-4">
+						<label for="operador" class="block text-gray-700 text-sm font-bold mb-2">Código operador:</label>
+						<input type="number" wire:model="mcodigo_operador" class="appearance-none py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline rounded-lg">
+					</div>
+					<div class="flex-col w-auto mx-4">
+						<label for="motivo_descarte" class="block text-gray-700 text-sm font-bold mb-2">Motivo descarte:</label>
+
+						<select name="motivo_descarte" class="block mt-1 w-full rounded" wire:model="mmotivo_descarte">
+                    			<option value="">Seleccionar</option>
+
+                    			@foreach($motivos_descartes as $motivo)
+                    			<option value="{{$motivo->motivo}}">{{$motivo->motivo}}</option>
+              					@endforeach
+                		</select>
+					</div>
+				</div>
+
+				<div class="flex flex-row mt-4">
+					<div class=" w-96 mx-4">
+						<label for="comentarios" class="block text-gray-700 text-sm font-bold mb-2">Comentarios:</label>
+						<input type="text" wire:model="mcomentarios" class="w-full appearance-none py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline rounded-lg ">
+					</div>
 				</div>
 
 				</div>
-				<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+				<div class="bg-white px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
 					<span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
 						<button wire:click.prevent="store()" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5">
 						Guardar
