@@ -5,11 +5,13 @@
 		</div>
 <!-- This element is to trick the browser into centering the modal contents. -->
 	<span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>?
-		<div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+		<div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
 			<form>
-				<div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+				<div class="w-full bg-white px-4 pt-5 pb-4">
 
-						<div class="mb-4">
+					<div class="flex flex-row">
+
+						<div class="flex-col w-auto mx-4">
 							<label for="nombre_analista" class="block text-gray-700 text-sm font-bold mb-2">Analista:</label>
 
 							<select name="nombre_analista" class="block mt-1 w-full rounded" wire:model="mnombre_analista">
@@ -19,7 +21,7 @@
                     		@endforeach
                 			</select>
 						</div>
-						<div class="mb-4">
+						<div class="flex-col w-auto mb-4">
 							<label for="turno" class="block text-gray-700 text-sm font-bold mb-2">Turno:</label>
 
 							<select name="turno" class="block mt-1 w-full rounded" wire:model="mturno">
@@ -28,7 +30,7 @@
                     			<option value="2">2</option>
                 			</select>
 						</div>
-						<div class="mb-4">
+						<div class="flex-col w-auto mx-4">
 							<label for="grupo" class="block text-gray-700 text-sm font-bold mb-2">Grupo:</label>
 
 							<select name="grupo" class="block mt-1 w-full rounded" wire:model="mgrupo">
@@ -38,7 +40,11 @@
                     		@endforeach
                 			</select>
 						</div>
-						<div class="mb-4">
+					</div>
+
+					<div class="flex flex-row">
+
+						<div class="flex-col w-auto mx-4">
 							<label for="maquina" class="block text-gray-700 text-sm font-bold mb-2" wire:model="M">Máquina:</label>
 
 							<select name="maquina" class="block mt-1 w-full rounded" wire:model="mmaquina">
@@ -49,29 +55,34 @@
                 			</select>
 						</div>
 
-						<div class="">
-						<div class="mb-4">
-							<label for="linea" class="block text-gray-700 text-sm font-bold mb-2">Línea:</label>
-							<label for="linea2" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Línea">{{$mlinea}}</label>
+						<div class="flex-col w-auto mx-4">
+							<label for="linea" class="block text-gray-700 text-sm font-bold mb-4">Línea:</label>
+							<label for="linea2" class="border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mt-1" placeholder="Línea">{{$mlinea}}</label>
 							@error('linea') <span class="text-red-500">{{ $message }}</span>@enderror
 						</div>
-					</div>
 
 					@if($mtipo_maquina == "KASE")
-						<div class="mb-4">
+						<div class="flex-col w-auto mx-4">
 							<label for="tintas" class="block text-gray-700 text-sm font-bold mb-2">Tintas:</label>
 
 							<select name="tintas" class="block mt-1 w-full rounded" wire:model="mtintas">
-                    			<option value="">1</option>
-                    			<option value="">2</option>
-                    			<option value="">3</option>
+                    			<option value="1" selected>1</option>
+                    			<option value="2">2</option>
+                    			<option value="3">3</option>
                 			</select>
 						</div>
 					@endif
-					<div class="mb-4">
-							<label for="tintas" class="block text-gray-700 text-sm font-bold mb-2">ODC:</label>
-							<input type="number" wire:model="buscar_odc" class="appearance-none py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline rounded-lg">
+					</div>
 
+					<div class="flex flex-row mt-4">
+
+					<div class="flex-col w-auto mx-4">
+							<label for="tintas" class="block text-gray-700 text-sm font-bold mb-2">BUSCAR:</label>
+							<input type="number" wire:model="buscar_odc" class="appearance-none py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline rounded-lg">
+					</div>
+
+					<div class="flex-col w-96 mx-4">
+							<label for="bodc" class="block text-gray-700 text-sm font-bold mb-2">ODC:</label>
 							<select name="odc" class="block mt-1 w-full rounded" wire:model="morden_produccion">
                     			<option value="">Seleccionar ODC</option>
 
@@ -81,8 +92,7 @@
                 			</select>
 					</div>
 
-
-
+				</div>
 
 				</div>
 				<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
