@@ -19,5 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TipoMaquinaSeeder::class);
         $this->call(GrupoSeeder::class);
         $this->call(MotivosDescartesSeeder::class);
+        $this->call(MaquinaSeeder::class);   
+        $this->call(OrdenesDeProduccionSeeder::class);
     }
 }

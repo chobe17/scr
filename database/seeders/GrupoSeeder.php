@@ -15,7 +15,7 @@ class GrupoSeeder extends Seeder
     public function run()
     {
         DB::table('grupos')->insert([
-            'encargado' => '1. Miguel Revolorio',
+            'encargado' => '1. José Barillas',
         ]);
         DB::table('grupos')->insert([
             'encargado' => '2. Melvin Monzón',

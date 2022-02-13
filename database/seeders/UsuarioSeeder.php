@@ -19,7 +19,34 @@ class UsuarioSeeder extends Seeder
             'name' => 'Mynor Cáceres',
             'codigo' => '209',
             'area' => '5',
-            'password' => Hash::make('nirvana'),
+            'password' => Hash::make('contraseña'),
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Oscar Cetino',
+            'codigo' => '227',
+            'area' => '5',
+            'password' => Hash::make('contraseña'),
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Brian Archila',
+            'codigo' => '246',
+            'area' => '5',
+            'password' => Hash::make('contraseña'),
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Luis Estrada',
+            'codigo' => '69',
+            'area' => '5',
+            'password' => Hash::make('contraseña'),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Emmanuel Rodríguez',
+            'codigo' => '167',
+            'area' => '5',
+            'password' => Hash::make('contraseña'),
         ]);
     }
 }

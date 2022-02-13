@@ -42,9 +42,6 @@ class MotivosDescartesSeeder extends Seeder
             'motivo' => 'Faltante en Aleta',
         ]);
         DB::table('motivos_descartes')->insert([
-            'motivo' => 'Flameada',
-        ]);
-        DB::table('motivos_descartes')->insert([
             'motivo' => 'Golpe',
         ]);
         DB::table('motivos_descartes')->insert([
@@ -72,9 +69,6 @@ class MotivosDescartesSeeder extends Seeder
             'motivo' => 'Paros y Arranques',
         ]);
         DB::table('motivos_descartes')->insert([
-            'motivo' => 'Porosa',
-        ]);
-        DB::table('motivos_descartes')->insert([
             'motivo' => 'Puntos Negros',
         ]);
         DB::table('motivos_descartes')->insert([
@@ -82,9 +76,6 @@ class MotivosDescartesSeeder extends Seeder
         ]);
         DB::table('motivos_descartes')->insert([
             'motivo' => 'Rebaba de Aleta',
-        ]);
-        DB::table('motivos_descartes')->insert([
-            'motivo' => 'Sin Cintillo y Machucada',
         ]);
         DB::table('motivos_descartes')->insert([
             'motivo' => 'Sombrero',

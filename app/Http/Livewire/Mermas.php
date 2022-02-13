@@ -43,6 +43,7 @@ class Mermas extends Component
         }
         else
         {
+            $this->mmaquina = "";
             $this->mlinea = "";
             $this->mtipo_maquina = "";
         }

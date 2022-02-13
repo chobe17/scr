@@ -71,9 +71,6 @@
                     			<option value="3">3</option>
                 			</select>
 						</div>
-			
-
-					{{$mtintas}}
 					</div>
 
 					<div class="flex flex-row mt-4">
