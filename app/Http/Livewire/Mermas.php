@@ -16,7 +16,7 @@ class Mermas extends Component
 
     public $M, $mermas, $merma_id, $maquinas, $analistas, $grupos, $motivos_descartes, $operadores, $ordenes_produccion;
 
-    public $mlinea, $mmaquina, $mtipo_maquina, $mtintas, $mcodigo_analista, $mnombre_analista, $mturno, $mgrupo, $mproduccion, $mmerma, $mrechazados, $mmotivo_descarte,$mcomentarios, $mcodigo_operador, $morden_produccion, $mcodigo_producto, $mdescripcion_producto, $mconfirmado, $buscar_odc, $odcs;
+    public $mlinea, $mmaquina_id, $mmaquina, $mtipo_maquina, $mtintas, $mcodigo_analista, $mnombre_analista, $mturno, $mgrupo, $mproduccion, $mmerma, $mrechazados, $mmotivo_descarte,$mcomentarios, $mcodigo_operador, $morden_produccion, $mcodigo_producto, $mdescripcion_producto, $mconfirmado, $buscar_odc, $odcs;
 
     public $isOpen = 0;
 
@@ -26,20 +26,35 @@ class Mermas extends Component
         $this->mermas = Merma::all();
         $this->maquinas = Maquina::all();
 
-        if($this->mmaquina != null)
+        $this->analistas = DB::table('users')->where('area',5)->get();
+        $this->grupos = DB::table('grupos')->get();
+        $this->motivos_descartes = DB::table('motivos_descartes')->get();
+        $this->operadores = DB::table('users')->where('area',4)->get();
+        $this->ordenes_produccion = OrdenProduccion::All();
+
+        $buscar_odc = '%' . $this->buscar_odc . '%';
+        $this->odcs = OrdenProduccion::where('numero_orden', 'like', $buscar_odc)->get();
+
+        if($this->mmaquina_id != null)
         {
-            $this->mlinea = Maquina::where('id',$this->mmaquina)->value('linea');
-            $this->mtipo_maquina = Maquina::where('id',$this->mmaquina)->value('tipo_maquina');
+            $this->mmaquina = Maquina::where('id',$this->mmaquina_id)->value('nombre');
+            $this->mlinea = Maquina::where('id',$this->mmaquina_id)->value('linea');
+            $this->mtipo_maquina = Maquina::where('id',$this->mmaquina_id)->value('tipo_maquina');
         }
         else
         {
             $this->mlinea = "";
             $this->mtipo_maquina = "";
-            $this->mtintas = "";
         }
 
-        $buscar_odc = '%' . $this->buscar_odc . '%';
-        $this->odcs = OrdenProduccion::where('numero_orden', 'like', $buscar_odc)->get();
+        if($this->mcodigo_analista != null)
+        {
+            $this->mnombre_analista = User::where('id',$this->mcodigo_analista)->value('name');
+        }
+        else
+        {
+            $this->mnombre_analista = "";
+        }
 
         if($this->mproduccion >= 0 && $this->mmerma >=0)
         {
@@ -50,12 +65,19 @@ class Mermas extends Component
             $this->mrechazados = "";
         }
 
+        if($this->morden_produccion != null)
+        {
+            $this->mcodigo_producto = OrdenProduccion::where('numero_orden',$this->morden_produccion)->value('codigo_producto');
+        }
 
-        $this->analistas = DB::table('users')->where('area',5)->get();
-        $this->grupos = DB::table('grupos')->get();
-        $this->motivos_descartes = DB::table('motivos_descartes')->get();
-        $this->operadores = DB::table('users')->where('area',4)->get();
-        $this->ordenes_produccion = OrdenProduccion::All();
+        if($this->mtintas == null)
+        {
+            $this->mtintas = "N/A";
+        }
+
+
+
+        
 
         return view('livewire.mermas');
     }
@@ -103,46 +125,39 @@ class Mermas extends Component
     {
 
         $this->validate([
-            'mlinea' => 'required',
-            'mmaquina' => 'required',
-            'mtipo_maquina' => 'required',
-            'mtintas' => 'required',
-            'mcodigo_analista' => 'required',
             'mnombre_analista' => 'required',
             'mturno' => 'required',
             'mgrupo' => 'required',
+            'mmaquina' => 'required',
+            'morden_produccion' => 'required',
             'mproduccion' => 'required',
             'mmerma' => 'required',
             'mrechazados' => 'required',
-            'mmotivo_descarte' => 'required',
-            'mcomentarios' => 'required',
             'mcodigo_operador' => 'required',
-            'morden_produccion' => 'required',
-            'mcodigo_producto' => 'required',
-            'mdescripcion_producto' => 'required'
+            'mmotivo_descarte' => 'required',
         ]);
-        dd('validado');
+
         Merma::updateOrCreate(['id' => $this->merma_id],
-            [
-                'linea' => $this->mlinea,
-                'maquina' => $this->mmaquina,
-                'tipo_maquina' => $this->mtipo_maquina,
-                'tintas' => $this->mtintas,
-                'codigo_analista' => $this->mcodigo_analista,
-                'nombre_analista' => $this->mcodigo_analista,
-                'turno' => $this->mturno,
-                'grupo' => $this->mgrupo,
-                'produccion' => $this->mproduccion,
-                'merma' => $this->mmerma,
-                'rechazados' => $this->mrechazados,
-                'motivo_descarte' => $this->mmotivo_descarte,
-                'comentarios' => $this->mcomentarios,
-                'codigo_operador' => $this->mcodigo_operador,
-                'orden_produccion' => $this->morden_produccion,
-                'codigo_producto' => $this->mcodigo_producto,
-                'descripcion_producto' => $this->mdescripcion_producto,
-            ]);
-        dd('deberia haber guardado');
+        [
+            'linea' => $this->mlinea,
+            'maquina' => $this->mmaquina,
+            'tipo_maquina' => $this->mtipo_maquina,
+            'tintas' => $this->mtintas,
+            'codigo_analista' => $this->mcodigo_analista,
+            'nombre_analista' => $this->mnombre_analista,
+            'turno' => $this->mturno,
+            'grupo' => $this->mgrupo,
+            'produccion' => $this->mproduccion,
+            'merma' => $this->mmerma,
+            'rechazados' => $this->mrechazados,
+            'motivo_descarte' => $this->mmotivo_descarte,
+            'comentarios' => $this->mcomentarios,
+            'codigo_operador' => $this->mcodigo_operador,
+            'orden_produccion' => $this->morden_produccion,
+            'codigo_producto' => $this->mcodigo_producto,
+            'descripcion_producto' => $this->mdescripcion_producto,
+            'confirmado' => false,
+        ]);
 
         session()->flash('message', $this->merma_id ? 'Registro modificado exitosamente.' : 'Registro agregado exitosamente.');
 

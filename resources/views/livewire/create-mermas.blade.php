@@ -14,10 +14,10 @@
 						<div class="flex-col w-auto mx-4">
 							<label for="nombre_analista" class="block text-gray-700 text-sm font-bold mb-2">Analista:</label>
 
-							<select name="nombre_analista" class="block mt-1 w-full rounded" wire:model="mnombre_analista">
+							<select name="nombre_analista" class="block mt-1 w-full rounded" wire:model="mcodigo_analista">
                     			<option value="">Nombre de analista</option>
                     		@foreach ($analistas as $analista)
-                        		<option value="{{ $analista->name }}">{{ $analista->name }}</option>
+                        		<option value="{{ $analista->id }}">{{ $analista->name }}</option>
                     		@endforeach
                 			</select>
 						</div>
@@ -47,7 +47,7 @@
 						<div class="flex-col w-auto mx-4">
 							<label for="maquina" class="block text-gray-700 text-sm font-bold mb-2" wire:model="M">Máquina:</label>
 
-							<select name="maquina" class="block mt-1 w-full rounded" wire:model="mmaquina">
+							<select name="maquina" class="block mt-1 w-full rounded" wire:model="mmaquina_id">
                     			<option value="">Maquina</option>
                     		@foreach ($maquinas as $maquina)
                         		<option value="{{ $maquina->id }}">{{ $maquina->nombre }}</option>
@@ -61,17 +61,19 @@
 							@error('linea') <span class="text-red-500">{{ $message }}</span>@enderror
 						</div>
 
-					@if($mtipo_maquina == "KASE")
 						<div class="flex-col w-auto mx-4">
 							<label for="tintas" class="block text-gray-700 text-sm font-bold mb-2">Tintas:</label>
 
 							<select name="tintas" class="block mt-1 w-full rounded" wire:model="mtintas">
-                    			<option value="1" selected>1</option>
+                    			<option value="N/A" selected default>N/A</option>
+                    			<option value="1">1</option>
                     			<option value="2">2</option>
                     			<option value="3">3</option>
                 			</select>
 						</div>
-					@endif
+			
+
+					{{$mtintas}}
 					</div>
 
 					<div class="flex flex-row mt-4">
