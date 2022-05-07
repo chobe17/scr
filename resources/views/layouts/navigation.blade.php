@@ -38,7 +38,12 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('mermas')" :active="request()->routeIs('livewire.mermas')">
-                        {{ __('Mermas') }}
+                        {{ __('Validación Mermas') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('seguimientos')" :active="request()->routeIs('livewire.seguimientos')">
+                        {{ __('Seguimiento Mermas') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -114,7 +119,12 @@
         </div>
                 <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('maquinas')" :active="request()->routeIs('livewire.maquinas')">
-                {{ __('Mermas') }}
+                {{ __('Validación Mermas') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('seguimientos')" :active="request()->routeIs('livewire.seguimientos')">
+                {{ __('Seguimiento Mermas') }}
             </x-responsive-nav-link>
         </div>
 
