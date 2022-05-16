@@ -28,7 +28,7 @@
 							<select name="maquina" class="block mt-1 w-full rounded" wire:model="maquina">
                     			<option value="">Maquina</option>
                     		@foreach ($maquinas as $mmaquina)
-                        		<option value="{{ $mmaquina->id }}">{{ $mmaquina->nombre }}</option>
+                        		<option value="{{ $mmaquina->nombre }}">{{ $mmaquina->nombre }}</option>
                     		@endforeach
                 			</select>
                 			</div>
