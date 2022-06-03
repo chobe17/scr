@@ -14,9 +14,21 @@ class Seguimientos extends Component
 
     public $maquinas, $motivos_descartes, $isOpen;
 
+    public $columns = [
+        'Created_at',
+        'Turno',
+        'Maquina',
+        'Merma',
+        'Motivo_descarte',
+        'Comentarios'
+    ];
+
+    public $sortColumn= "created_at";
+    public $sortDirection = "desc";
+
     public function render()
     {
-        $this->seguimientos = Seguimiento::all();
+        $this->seguimientos = Seguimiento::orderBy($this->sortColumn, $this->sortDirection)->get();
         $this->maquinas = Maquina::all();
         $this->motivos_descartes = DB::table('motivos_descartes')->get();
 
@@ -90,6 +102,12 @@ class Seguimientos extends Component
     {
         Seguimiento::find($id)->delete();
         session()->flash('message', 'Registro eliminado exitosamente.');
+    }
+
+    public function sort($column)
+    {
+        $this->sortColumn = $column;
+        $this->sortDirection = $this->sortDirection == 'asc' ? 'desc' : 'asc';
     }
 
 

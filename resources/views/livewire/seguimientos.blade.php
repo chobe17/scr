@@ -25,12 +25,22 @@
             <table class="table-fixed w-full">
                 <thead>
                     <tr class="bg-gray-100">
-                        <th class="px-4 py-2">Fecha</th>
-                        <th class="px-4 py-2">Turno</th>
-                        <th class="px-4 py-2">Maquina</th>
-                        <th class="px-4 py-2">Merma</th>
-                        <th class="px-4 py-2">Motivo descarte</th>
-                        <th class="px-4 py-2">Comentarios</th>
+                        
+                        @foreach($columns as $c)
+                        <th class="px-4 py-2" wire:click="sort('{{ $c }}')">
+                            <button>
+                                {{ $c }}
+                            </button>
+                            @if($sortColumn == $c)
+                                @if($sortDirection == 'asc')
+                                    <button>&uarr;</button>
+                                @else
+                                    <button>&darr;</button>
+                                @endif
+                            @endif
+                        </th>
+                        @endforeach
+
                         <th class="px-4 py-2">Acción</th>
                     </tr>
                 </thead>
