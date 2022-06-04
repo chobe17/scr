@@ -17,10 +17,12 @@
             </div>
             @endif
 
-            <button wire:click="create()" class="bg-blue-500 hover:bg-blue800 text-white font-bold py-2 px-4 rounded my-3">Agregar registro</button>
+            <button wire:click="create()" class="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded my-3">Agregar registro</button>
 
-            <a href="/imprimir-seguimiento "><button class="bg-green-500 hover:bg-green800 text-white font-bold py-2 px-4 rounded my-3">Exportar a PDF</button></a>
+            <a href="/imprimir-seguimiento "><button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded my-3">Exportar a PDF</button></a>
 
+            <a href="/exportar-seguimiento "><button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded my-3">Exportar a Excel</button></a>
+            
             @if($isOpen)
             @include('livewire.create-seguimientos')
             @endif

@@ -17,7 +17,7 @@
 			</div>
 			@endif
 
-			<button wire:click="create()" class="bg-blue-500 hover:bg-blue800 text-white font-bold py-2 px-4 rounded my-3">Agregar departamento</button>
+			<button wire:click="create()" class="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded my-3">Agregar departamento</button>
 			@if($isOpen)
 			@include('livewire.create-departamentos')
 			@endif

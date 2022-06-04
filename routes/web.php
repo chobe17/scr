@@ -42,4 +42,7 @@ Route::middleware(['auth'])->get('/seguimientos', Seguimientos::class)->name('se
 
 Route::get('/imprimir-seguimiento', [Seguimientos::class, 'imprimir'])->name('imprimir-seguimiento');
 
+Route::get('/exportar-seguimiento', [Seguimientos::class, 'exportar'])->name('exportar-seguimiento');
+
+
 require __DIR__.'/auth.php';

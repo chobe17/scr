@@ -16,7 +16,7 @@
             </div>
             @endif
 
-            <button wire:click="create()" class="bg-blue-500 hover:bg-blue700 text-white font-bold py-2 w-auto px-2 rounded my-3">Agregar registro</button>
+            <button wire:click="create()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 w-auto px-2 rounded my-3">Agregar registro</button>
             @if($isOpen)
             @include('livewire.create-mermas')
             @endif

@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Seguimiento;
 use App\Models\Maquina;
+use App\Exports\SeguimientosExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 use Illuminate\Support\Facades\DB;
 
@@ -117,6 +119,11 @@ class Seguimientos extends Component
         $seguimientos_imp = Seguimiento::all();
         $pdf = \PDF::loadview('livewire.imprimir-seguimiento',compact('seguimientos_imp'));
         return $pdf->download('seguimiento.pdf');
+    }
+
+    public function exportar()
+    {
+        return Excel::download(new SeguimientosExport, 'seguimiento de mermas.xlsx');
     }
 
 
