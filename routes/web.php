@@ -44,5 +44,9 @@ Route::get('/imprimir-seguimiento', [Seguimientos::class, 'imprimir'])->name('im
 
 Route::get('/exportar-seguimiento', [Seguimientos::class, 'exportar'])->name('exportar-seguimiento');
 
+Route::get('/imprimir-merma', [Mermas::class, 'imprimir'])->name('imprimir-merma');
+
+Route::get('/exportar-merma', [Mermas::class, 'exportar'])->name('exportar-merma');
+
 
 require __DIR__.'/auth.php';

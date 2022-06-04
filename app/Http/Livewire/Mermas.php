@@ -8,7 +8,9 @@ use App\Models\Merma;
 use App\Models\Maquina;
 use App\Models\User;
 use App\Models\OrdenProduccion;
-
+use PDF;
+use App\Exports\MermasExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class Mermas extends Component
@@ -20,10 +22,32 @@ class Mermas extends Component
 
     public $isOpen = 0;
 
+    public $columns = [
+        'created_at',
+        'nombre_analista',
+        'Turno',
+        'Grupo',
+        'Maquina',
+        'Tintas',
+        'orden_produccion',
+        'codigo_producto',
+        'Produccion',
+        'Merma',
+        'Rechazados',
+        'motivo_descarte',
+        'Comentarios',
+        'codigo_operador'
+    ];
+
+    public $sortColumn= "created_at";
+    public $sortDirection = "desc";
+
+    public $mermas_imp="";
+
     public function render()
     {
 
-        $this->mermas = Merma::all();
+        $this->mermas = Merma::orderBy($this->sortColumn, $this->sortDirection)->get();
         $this->maquinas = Maquina::all();
 
         $this->analistas = DB::table('users')->where('area',5)->get();
@@ -197,6 +221,25 @@ class Mermas extends Component
     {
         Merma::find($id)->delete();
         session()->flash('message', 'Registro eliminado correctamente.');
+    }
+
+    public function sort($column)
+    {
+        $this->sortColumn = $column;
+        $this->sortDirection = $this->sortDirection == 'asc' ? 'desc' : 'asc';
+    }
+
+    public function imprimir()
+    {
+        $mermas_imp = Merma::all();
+        $pdf = \PDF::loadview('livewire.imprimir-merma',compact('mermas_imp'));
+        $pdf->setPaper('letter','landscape');
+        return $pdf->download('registro de meras.pdf');
+    }
+
+    public function exportar()
+    {
+        return Excel::download(new MermasExport, 'registro de mermas.xlsx');
     }
 
 }

@@ -35,7 +35,7 @@
                         <th class="px-4 py-2" wire:click="sort('{{ $c }}')">
                             
                                 @if($c == "created_at")
-                                <button>Fecha</button>
+                                <button><b>Fecha</b></button>
                                 @else
                                 <button>{{ $c }}</button>
                                 @endif

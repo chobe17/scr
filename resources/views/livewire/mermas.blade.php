@@ -17,27 +17,56 @@
             @endif
 
             <button wire:click="create()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 w-auto px-2 rounded my-3">Agregar registro</button>
+
+            <a href="/imprimir-merma "><button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded my-3">Exportar a PDF</button></a>
+
+            <a href="/exportar-merma "><button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded my-3">Exportar a Excel</button></a>
+
             @if($isOpen)
             @include('livewire.create-mermas')
             @endif
 
             <table class="table-auto">
                 <thead>
+                    
                     <tr class="bg-gray-100">
-                        <th class="px-2 py-2 w-auto">Fecha creación</th>
-                        <th class="px-2 py-2 w-auto">Analista</th>
-                        <th class="px-2 py-2 w-20">Turno</th>
-                        <th class="px-2 py-2 w-20">Grupo</th>
-                        <th class="px-2 py-2 w-20">Maquina</th>
-                        <th class="px-2 py-2 w-20">Tintas</th>
-                        <th class="px-2 py-2 w-20">ODC</th>
-                        <th class="px-2 py-2 w-44">Codigo</th>
-                        <th class="px-2 py-2 w-auto">Producción</th>
-                        <th class="px-2 py-2 w-auto">Merma</th>
-                        <th class="px-2 py-2 w-auto">Rechazados</th>
-                        <th class="px-2 py-2 w-auto">Motivo Descarte</th>
-                        <th class="px-2 py-2 w-auto">Comentarios</th>
-                        <th class="px-2 py-2 w-20">Operador</th>
+                        
+                        @foreach($columns as $c)
+                        <th class="px-4 py-2" wire:click="sort('{{ $c }}')">
+                            
+                                @if($c == "created_at")
+                                <button><b>Fecha</b></button>
+                                
+                                @elseif($c == "nombre_analista")
+                                <button><b>Analista</b></button>
+                                
+                                @elseif($c == "orden_produccion")
+                                <button><b>ODC</b></button>
+                                
+                                @elseif($c == "codigo_producto")
+                                <button><b>Codigo</b></button>
+
+                                @elseif($c == "motivo_descarte")
+                                <button><b>Motivo Descarte</b></button>
+
+                                @elseif($c == "codigo_operador")
+                                <button><b>Operador</b></button>
+                                
+
+                                @else
+                                <button><b>{{ $c }}</b></button>
+                                @endif
+
+                            @if($sortColumn == $c)
+                                @if($sortDirection == 'asc')
+                                    <button>&uarr;</button>
+                                @else
+                                    <button>&darr;</button>
+                                @endif
+                            @endif
+                        </th>
+                        @endforeach
+
                         <th class="px-2 py-2 w-auto">Confirmar</th>
                         <th class="px-2 py-2 w-auto">Editar</th>
                         <th class="text-center px-2 py-2 w-auto">Eliminar</th>

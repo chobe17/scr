@@ -118,7 +118,7 @@ class Seguimientos extends Component
     {
         $seguimientos_imp = Seguimiento::all();
         $pdf = \PDF::loadview('livewire.imprimir-seguimiento',compact('seguimientos_imp'));
-        return $pdf->download('seguimiento.pdf');
+        return $pdf->download('seguimientos.pdf');
     }
 
     public function exportar()
