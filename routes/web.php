@@ -40,4 +40,6 @@ Route::middleware(['auth'])->get('/mermas', Mermas::class)->name('mermas');
 
 Route::middleware(['auth'])->get('/seguimientos', Seguimientos::class)->name('seguimientos');
 
+Route::get('/imprimir-seguimiento', [Seguimientos::class, 'imprimir'])->name('imprimir-seguimiento');
+
 require __DIR__.'/auth.php';

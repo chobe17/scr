@@ -15,7 +15,7 @@ class Seguimientos extends Component
     public $maquinas, $motivos_descartes, $isOpen;
 
     public $columns = [
-        'Created_at',
+        'created_at',
         'Turno',
         'Maquina',
         'Merma',
@@ -25,6 +25,8 @@ class Seguimientos extends Component
 
     public $sortColumn= "created_at";
     public $sortDirection = "desc";
+
+    public $seguimientos_imp="";
 
     public function render()
     {
@@ -108,6 +110,13 @@ class Seguimientos extends Component
     {
         $this->sortColumn = $column;
         $this->sortDirection = $this->sortDirection == 'asc' ? 'desc' : 'asc';
+    }
+
+    public function imprimir()
+    {
+        $seguimientos_imp = Seguimiento::all();
+        $pdf = \PDF::loadview('livewire.imprimir-seguimiento',compact('seguimientos_imp'));
+        return $pdf->download('seguimiento.pdf');
     }
 
 

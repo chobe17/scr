@@ -18,6 +18,9 @@
             @endif
 
             <button wire:click="create()" class="bg-blue-500 hover:bg-blue800 text-white font-bold py-2 px-4 rounded my-3">Agregar registro</button>
+
+            <a href="/imprimir-seguimiento "><button class="bg-green-500 hover:bg-green800 text-white font-bold py-2 px-4 rounded my-3">Exportar a PDF</button></a>
+
             @if($isOpen)
             @include('livewire.create-seguimientos')
             @endif
@@ -28,9 +31,12 @@
                         
                         @foreach($columns as $c)
                         <th class="px-4 py-2" wire:click="sort('{{ $c }}')">
-                            <button>
-                                {{ $c }}
-                            </button>
+                            
+                                @if($c == "created_at")
+                                <button>Fecha</button>
+                                @else
+                                <button>{{ $c }}</button>
+                                @endif
                             @if($sortColumn == $c)
                                 @if($sortDirection == 'asc')
                                     <button>&uarr;</button>
