@@ -48,5 +48,11 @@ class UsuarioSeeder extends Seeder
             'area' => '5',
             'password' => Hash::make('contraseña'),
         ]);
+        DB::table('users')->insert([
+            'name' => 'Virginia Aguilar',
+            'codigo' => '247',
+            'area' => '2',
+            'password' => Hash::make('contraseña'),
+        ]);
     }
 }
