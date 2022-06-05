@@ -25,7 +25,7 @@ class SeguimientosExport implements FromCollection,WithHeadings
     }
     public function collection()
     {
-         $seguimientos = DB::table('Seguimientos')->select('created_at','turno', 'maquina', 'merma', 'motivo_descarte', 'comentarios')->get();
+         $seguimientos = DB::table('seguimientos')->select('created_at','turno', 'maquina', 'merma', 'motivo_descarte', 'comentarios')->get();
          return $seguimientos;
 
     }

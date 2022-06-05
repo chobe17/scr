@@ -37,7 +37,7 @@ class MermasExport implements FromCollection,WithHeadings
     }
     public function collection()
     {
-         $mermas = DB::table('Mermas')->select('created_at','linea', 'maquina', 'tipo_maquina', 'tintas', 'codigo_analista', 'nombre_analista', 'turno', 'grupo', 'produccion', 'merma', 'rechazados', 'motivo_descarte', 'comentarios', 'codigo_operador', 'orden_produccion', 'codigo_producto', 'descripcion_producto')->get();
+         $mermas = DB::table('mermas')->select('created_at','linea', 'maquina', 'tipo_maquina', 'tintas', 'codigo_analista', 'nombre_analista', 'turno', 'grupo', 'produccion', 'merma', 'rechazados', 'motivo_descarte', 'comentarios', 'codigo_operador', 'orden_produccion', 'codigo_producto', 'descripcion_producto')->get();
          return $mermas;
 
     }
