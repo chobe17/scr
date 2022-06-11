@@ -4,7 +4,6 @@ namespace App\Charts;
 
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 use App\Models\Seguimiento;
-use App\Models\User;
 
 class SeguimientoDiario
 {
@@ -17,11 +16,21 @@ class SeguimientoDiario
 
     public function build(): \ArielMejiaDev\LarapexCharts\LineChart
     {
-    $fechas = Seguimiento::whereMaquina('CCM AJ')->limit(6)->pluck('turno')->toArray();
+        $cfechas = Seguimiento::whereMaquina('CCM AJ')->limit(6)->pluck('created_at')->toArray();
+        $fechas = [];
+        $maquina = 'CCM AJ';
+        $cmaquina = Seguimiento::whereMaquina($maquina)->limit(6)->pluck('merma')->toArray();
+
+
+        foreach($cfechas as $cfecha)
+        {
+            array_push($fechas, $cfecha->day);
+        }
+
         return $this->chart->lineChart()
             ->setTitle('Seguimientos de merma')
-            ->setSubtitle('CCM AJ') 
-            ->addData('Merma', Seguimiento::whereMaquina('CCM AJ')->limit(6)->pluck('merma')->toArray())
+            ->setSubtitle($maquina) 
+            ->addData('Merma', $cmaquina)
             ->setXAxis($fechas);
     }
 }

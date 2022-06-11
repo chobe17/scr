@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(OrdenesDeProduccionSeeder::class);
         $this->call(MermaSeeder::class);
         $this->call(SeguimientoSeeder::class);
+        $this->call(MermaDiariaSeeder::class);
     }
 }
