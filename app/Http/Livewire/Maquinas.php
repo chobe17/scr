@@ -13,12 +13,20 @@ class Maquinas extends Component
     public $maquinas, $nombre, $tipo_maquina, $linea, $capacidad, $maquina_id;
     public $tmaquinas, $tlineas;
 	public $isOpen = 0;
+    public $consulta = '';
 
     public function render()
     {
-    	$this->maquinas = Maquina::all();
     	$this->tmaquinas = TipoMaquina::all();
     	$this->tlineas = Linea::all();
+
+        $consulta = '%' . $this->consulta . '%';
+        $this->maquinas = Maquina::where('nombre', 'like', $consulta)
+        ->orWhere('tipo_maquina', 'like', $consulta)
+        ->orWhere('linea', 'like', $consulta)
+        ->orWhere('capacidad', 'like', $consulta)
+        ->get();
+        
         return view('livewire.maquinas');
     }
 

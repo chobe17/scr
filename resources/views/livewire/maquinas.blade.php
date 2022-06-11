@@ -17,6 +17,10 @@
 			@endif
 
 			<button wire:click="create()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-3">Agregar maquina</button>
+			<br>
+            <label for="consulta" class="block text-gray-700 text-sm font-bold mb-2">Buscar:</label>
+            <input type="text" wire:model="consulta" class="appearance-none py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline rounded-lg">
+            <br><br>
 			@if($isOpen)
 			@include('livewire.create-maquinas')
 			@endif

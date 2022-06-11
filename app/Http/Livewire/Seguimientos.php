@@ -27,12 +27,15 @@ class Seguimientos extends Component
 
     public $sortColumn= "created_at";
     public $sortDirection = "desc";
-
+    public $consulta = '';
     public $seguimientos_imp="";
 
     public function render()
     {
-        $this->seguimientos = Seguimiento::orderBy($this->sortColumn, $this->sortDirection)->get();
+        $consulta = '%' . $this->consulta . '%';
+        $this->seguimientos = Seguimiento::where('maquina', 'like', $consulta)
+        ->orWhere('motivo_descarte', 'like', $consulta)->orderBy($this->sortColumn, $this->sortDirection)->get();        
+
         $this->maquinas = Maquina::all();
         $this->motivos_descartes = DB::table('motivos_descartes')->get();
 

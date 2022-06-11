@@ -9,10 +9,14 @@ class Lineas extends Component
 {
 	public $lineas, $nombre, $descripcion, $linea_id;
 	public $isOpen = 0;
+    public $consulta = '';
 
     public function render()
     {
-    	$this->lineas = Linea::all();
+    	$consulta = '%' . $this->consulta . '%';
+        $this->lineas = Linea::where('nombre', 'like', $consulta)
+        ->orWhere('descripcion', 'like', $consulta)
+        ->get();
         return view('livewire.lineas');
     }
 

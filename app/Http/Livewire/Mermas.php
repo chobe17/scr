@@ -43,11 +43,11 @@ class Mermas extends Component
     public $sortDirection = "desc";
 
     public $mermas_imp="";
+    public $consulta = '';
 
     public function render()
     {
 
-        $this->mermas = Merma::orderBy($this->sortColumn, $this->sortDirection)->get();
         $this->maquinas = Maquina::all();
 
         $this->analistas = DB::table('users')->where('area',5)->get();
@@ -100,8 +100,15 @@ class Mermas extends Component
             $this->mtintas = "N/A";
         }
 
-
-
+        $this->mermas = Merma::orderBy($this->sortColumn, $this->sortDirection)->get();
+        
+        $consulta = '%' . $this->consulta . '%';
+        $this->mermas = Merma::where('nombre_analista', 'like', $consulta)
+        ->orWhere('maquina', 'like', $consulta)
+        ->orWhere('motivo_descarte', 'like', $consulta)
+        ->orWhere('codigo_producto', 'like', $consulta)
+        ->orderBy($this->sortColumn, $this->sortDirection)
+        ->get();
         
 
         return view('livewire.mermas');

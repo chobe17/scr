@@ -43,7 +43,7 @@
                 <img src="{{ public_path() . '/img/Logo.png'}}">
         </div>
 
-        <h1>Validación de mermas</h1><br><br>
+        <h1>Reporte de validación de mermas</h1><br><br>
         
     
             <table class="table-fixed w-full">
@@ -56,7 +56,7 @@
                         <th class="px-4 py-2">Maquina</th>
                         <th class="px-4 py-2">Tintas</th>
                         <th class="px-4 py-2">ODC</th>
-                        <th class="px-4 py-2">Codigo</th>
+                        <th class="px-4 py-2"><div style="widht: 100px">Codigo</div></th>
                         <th class="px-4 py-2">Producción</th>
                         <th class="px-4 py-2">Merma</th>
                         <th class="px-4 py-2">Rechazados</th>
@@ -75,7 +75,7 @@
                         <td class="border px-4 py-2">{{ $merma->maquina }}</td>
                         <td class="border px-4 py-2">{{ $merma->tintas }}</td>
                         <td class="border px-4 py-2">{{ $merma->orden_produccion }}</td>
-                        <td class="border px-4 py-2">{{ $merma->codigo_producto }}</td>
+                        <td class="border px-4 py-2"><div style="widht: 100px">{{ $merma->codigo_producto }}</div></td>
                         <td class="border px-4 py-2">{{ $merma->produccion }}</td>
                         <td class="border px-4 py-2">{{ $merma->merma }}</td>
                         <td class="border px-4 py-2">{{ $merma->rechazados }}</td>

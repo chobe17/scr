@@ -16,10 +16,10 @@ class SeguimientoDiario
 
     public function build(): \ArielMejiaDev\LarapexCharts\LineChart
     {
-        $cfechas = Seguimiento::whereMaquina('CCM AJ')->limit(6)->pluck('created_at')->toArray();
+        $cfechas = Seguimiento::whereMaquina('CCM AJ')->limit(7)->pluck('created_at')->toArray();
         $fechas = [];
         $maquina = 'CCM AJ';
-        $cmaquina = Seguimiento::whereMaquina($maquina)->limit(6)->pluck('merma')->toArray();
+        $cmaquina = Seguimiento::whereMaquina($maquina)->limit(7)->pluck('merma')->toArray();
 
 
         foreach($cfechas as $cfecha)

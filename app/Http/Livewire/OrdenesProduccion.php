@@ -10,10 +10,16 @@ class OrdenesProduccion extends Component
 
     public $ordenes_produccion, $numero_orden, $codigo_producto, $descripcion_producto, $op_id;
     public $isOpen = 0;
+    public $consulta = '';
 
     public function render()
     {
-        $this->ordenes_produccion = OrdenProduccion::all();
+        $consulta = '%' . $this->consulta . '%';
+        $this->ordenes_produccion = OrdenProduccion::where('numero_orden', 'like', $consulta)
+        ->orWhere('codigo_producto', 'like', $consulta)
+        ->orWhere('descripcion_producto', 'like', $consulta)
+        ->get();
+        
         return view('livewire.ordenes-produccion');
     }
 
@@ -59,7 +65,7 @@ class OrdenesProduccion extends Component
 
 public function edit($id)
 {
-    $orden_produccion = OrdenProduccion::findOrfail($op_id);
+    $orden_produccion = OrdenProduccion::findOrfail($id);
     $this->op_id = $orden_produccion->id;
     $this->numero_orden = $orden_produccion->numero_orden;
     $this->codigo_producto = $orden_produccion->codigo_producto;

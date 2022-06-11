@@ -16,9 +16,9 @@ class MermasDiarias
 
     public function build(): \ArielMejiaDev\LarapexCharts\LineChart
     {
-        $cfechas = MermaDiaria::limit(6)->pluck('created_at')->toArray();
+        $cfechas = MermaDiaria::limit(7)->pluck('created_at')->toArray();
         $fechas = [];
-        $mermas = MermaDiaria::limit(6)->pluck('merma')->toArray();
+        $mermas = MermaDiaria::limit(7)->pluck('merma')->toArray();
 
 
         foreach($cfechas as $cfecha)
@@ -30,7 +30,8 @@ class MermasDiarias
             ->setTitle('Merma diaria')
             ->setSubtitle('Semana 23') 
             ->addData('Merma', $mermas)
-            ->setXAxis($fechas);
+            ->setXAxis($fechas)
+            ->setColors(['#ff6384','#ffc63b']);
 
     }
 }

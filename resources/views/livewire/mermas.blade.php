@@ -21,7 +21,10 @@
             <a href="/imprimir-merma "><button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded my-3">Exportar a PDF</button></a>
 
             <a href="/exportar-merma "><button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded my-3">Exportar a Excel</button></a>
-
+            <br>
+            <label for="consulta" class="block text-gray-700 text-sm font-bold mb-2">Buscar:</label>
+            <input type="text" wire:model="consulta" class="appearance-none py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline rounded-lg">
+            <br><br>
             @if($isOpen)
             @include('livewire.create-mermas')
             @endif
